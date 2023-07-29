@@ -28,7 +28,7 @@ const Success = ({navigation}) => {
             fontWeight: '700',
             color: '#fff',
           }}>
-          Money added to wallet Successfully
+          Payment Success
         </Text>
         <Text
           style={{

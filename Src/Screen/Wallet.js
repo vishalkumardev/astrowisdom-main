@@ -30,7 +30,7 @@ const Wallet = ({navigation}) => {
     });
   }, []);
 
-  const TransectionList = ({item}) => (
+  const TransectionList = ({item, index}) => (
     <View
       style={{
         backgroundColor: 'white',
@@ -40,6 +40,7 @@ const Wallet = ({navigation}) => {
         width: '92%',
         paddingHorizontal: 10,
         marginVertical: 5,
+        marginBottom: index == Data.length - 1 ? 200 : 0,
         borderRadius: 10,
         paddingVertical: 8,
         alignSelf: 'center',
@@ -120,7 +121,11 @@ const Wallet = ({navigation}) => {
       </View>
 
       <View>
-        <FlatList data={Data} renderItem={TransectionList} />
+        <FlatList
+          data={Data}
+          renderItem={TransectionList}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </View>
   );

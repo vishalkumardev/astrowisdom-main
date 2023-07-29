@@ -145,7 +145,7 @@ const AddMoney = ({navigation, route}) => {
         </View>
       </View>
 
-      <View
+      {/* <View
         style={{
           backgroundColor: Colours.light,
           width: '92%',
@@ -161,7 +161,7 @@ const AddMoney = ({navigation, route}) => {
           numColumns={3}
           keyExtractor={item => '_' + item.key}
         />
-      </View>
+      </View> */}
     </View>
   );
 };

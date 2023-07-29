@@ -3,35 +3,33 @@ import {
   Text,
   View,
   FlatList,
-  Image,
   TouchableOpacity,
   ToastAndroid,
+  Image,
 } from 'react-native';
-import React, {useEffect, useState, useContext} from 'react';
-import Family from '../Utilities/Family';
+import React, {useState, useEffect, useContext} from 'react';
 import Colours from '../Assets/Colours';
 import ShopHeader from '../Assets/ShopHeader';
 import Global from '../Utilities/Global';
+import {ShoppingCartIcon} from 'react-native-heroicons/outline';
+import Family from '../Utilities/Family';
 import {UserAuthContext} from '../context/UserAuthContext';
 import Loader from '../Utilities/LoadingModal';
-import {ShoppingCartIcon} from 'react-native-heroicons/outline';
 
-const Shop = ({navigation}) => {
-  const [Data, setData] = useState([]);
-  const [Category, setCategory] = useState([]);
+const Category = ({navigation, route}) => {
+  const {User} = useContext(UserAuthContext);
+  const {title, categoryId} = route.params;
   const [Products, setProducts] = useState([]);
   const [Loading, setLoading] = useState(false);
-
-  const {User} = useContext(UserAuthContext);
-  const getItems = async () => {
+  const getData = async () => {
     setLoading(true);
-    const response = await fetch(Global.BASE_URL + `shoppingHome`);
+    const response = await fetch(
+      Global.BASE_URL + `shopByCategory&categoryId=${categoryId}`,
+    );
     const data = await response.json();
-    setCategory(data.category);
     setProducts(data.product);
     setLoading(false);
   };
-
   const addtoCart = async (id, price) => {
     const response = await fetch(
       Global.BASE_URL +
@@ -45,7 +43,7 @@ const Shop = ({navigation}) => {
   };
 
   useEffect(() => {
-    getItems();
+    getData();
   }, []);
 
   return (
@@ -54,65 +52,35 @@ const Shop = ({navigation}) => {
         <Loader isLoading={Loading} />
       ) : (
         <View style={{flex: 1}}>
-          <ShopHeader name={'AstroWisdom Shop'} navigation={navigation} />
-
-          <View style={{paddingHorizontal: 10}}>
-            <FlatList
-              data={Category}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              renderItem={({item}) => {
-                return (
-                  <TouchableOpacity
-                    style={{
-                      paddingHorizontal: 5,
-                      marginVertical: 10,
-                      borderRadius: 10,
-                    }}
-                    onPress={() =>
-                      navigation.navigate('Category', {
-                        title: item.categoryName,
-                        categoryId: item.categoryId,
-                      })
-                    }>
-                    <Image
-                      source={{
-                        uri: item.icon,
-                      }}
-                      style={{
-                        width: 60,
-                        height: 60,
-                        resizeMode: 'contain',
-                        borderRadius: 5,
-                        alignSelf: 'center',
-                      }}
-                    />
-
-                    <Text
-                      style={{
-                        color: Colours.TextGrayColour,
-                        fontFamily: Family.Medium,
-                        textAlign: 'center',
-                        marginVertical: 10,
-                        fontSize: 12,
-                      }}>
-                      {item.categoryName}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              }}
-            />
-          </View>
+          <ShopHeader name={`${title}`} navigation={navigation} />
 
           <View>
             <FlatList
               data={Products}
+              ListEmptyComponent={
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: 200,
+                  }}>
+                  <Text
+                    style={{
+                      color: Colours.PrimaryColor,
+                      fontFamily: Family.SemiBold,
+                      margin: 0,
+                    }}>
+                    No Product Found
+                  </Text>
+                </View>
+              }
               renderItem={({item, index}) => {
                 return (
                   <View
                     style={{
                       marginHorizontal: 10,
-                      marginVertical: index == 0 ? 0 : 20,
+                      marginVertical: index == 0 ? 10 : 20,
                       backgroundColor: Colours.light,
                       borderRadius: 10,
                       flexDirection: 'row',
@@ -207,6 +175,6 @@ const Shop = ({navigation}) => {
   );
 };
 
-export default Shop;
+export default Category;
 
 const styles = StyleSheet.create({});

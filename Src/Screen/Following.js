@@ -91,7 +91,28 @@ const Following = ({navigation}) => {
     <View>
       <Header navigation={navigation} name={'Following'} />
       <View>
-        <FlatList data={Data} renderItem={FollowingList} />
+        <FlatList
+          data={Data}
+          renderItem={FollowingList}
+          ListEmptyComponent={
+            <View
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: 400,
+              }}>
+              <Text
+                style={{
+                  color: Colours.PrimaryColor,
+                  fontFamily: Family.Medium,
+                  fontSize: 18,
+                }}>
+                No Following Found
+              </Text>
+            </View>
+          }
+        />
       </View>
     </View>
   );

@@ -19,7 +19,7 @@ import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Global from '../Utilities/Global';
 import Family from '../Utilities/Family';
-import {UserGroupIcon} from 'react-native-heroicons/outline';
+import {ShoppingBagIcon, UserGroupIcon} from 'react-native-heroicons/outline';
 
 const MyAccount = ({navigation}) => {
   const [Data, setData] = useState();
@@ -120,9 +120,9 @@ const MyAccount = ({navigation}) => {
 
         <TouchableOpacity
           style={styles.ButtonBox}
-          onPress={() => navigation.navigate('Chat')}>
-          <Chat name="chatbubbles" size={25} color="black" />
-          <Text style={styles.ButtonText}>Chat with Astrologer</Text>
+          onPress={() => navigation.navigate('MyOrder')}>
+          <ShoppingBagIcon size={26} color="black" />
+          <Text style={styles.ButtonText}>My Order</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

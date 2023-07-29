@@ -8,7 +8,6 @@ import Otp from './Src/Screen/Otp';
 import Profile from './Src/Screen/Profile';
 import CreateProfile from './Src/Screen/CreateProfile';
 import BottomNavigationbar from './Src/Assets/BottomNavigationbar';
-import Test from './Src/Screen/Test';
 import Wallet from './Src/Screen/Wallet';
 import AddMoney from './Src/Screen/AddMoney';
 import FreeKundli from './Src/Screen/FreeKundli';
@@ -35,6 +34,9 @@ import Error from './Src/Screen/Error';
 import ViewChat from './Src/Screen/ViewChat';
 import Following from './Src/Screen/Following';
 import Cart from './Src/Screen/Cart';
+import Address from './Src/Screen/Address';
+import MyOrder from './Src/Screen/MyOrder';
+import Category from './Src/Screen/Category';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -76,7 +78,6 @@ const App = () => {
             },
           }}
           initialRouteName={'Splash'}>
-          <Stack.Screen name="Test" component={Test} />
           <Stack.Screen
             name="Following"
             component={Following}
@@ -102,6 +103,7 @@ const App = () => {
             }}
           />
           <Stack.Screen name="Cart" component={Cart} />
+          <Stack.Screen name="Address" component={Address} />
           <Stack.Screen
             name="Error"
             component={Error}
@@ -162,6 +164,11 @@ const App = () => {
           />
           <Stack.Screen name="Wallet" component={Wallet} />
           <Stack.Screen
+            name="MyOrder"
+            component={MyOrder}
+            options={{title: 'My Order'}}
+          />
+          <Stack.Screen
             name="Profile"
             component={Profile}
             options={{
@@ -202,6 +209,13 @@ const App = () => {
           <Stack.Screen
             name="VoiceCall"
             component={VoiceCall}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Category"
+            component={Category}
             options={{
               headerShown: false,
             }}

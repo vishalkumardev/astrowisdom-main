@@ -16,11 +16,12 @@ import {
   MapPinIcon,
   UserCircleIcon,
 } from 'react-native-heroicons/solid';
+import {useIsFocused} from '@react-navigation/native';
 
 const Kundli = ({navigation}) => {
   const [data, setdata] = useState([]);
   const [userID, setUserID] = useState();
-
+  const isFocused = useIsFocused();
   const CreateKundli = item => {
     navigation.navigate('Your Kundli', {
       name: item.name,
@@ -55,7 +56,7 @@ const Kundli = ({navigation}) => {
       setUserID(value);
       getAPIdata(value);
     });
-  }, []);
+  }, [isFocused]);
 
   const [isLoading, SetLoading] = useState(true);
 
@@ -116,7 +117,15 @@ const Kundli = ({navigation}) => {
           )}
         />
       ) : (
-        <Text style={{fontSize: 18, alignSelf: 'center', textAlign: 'center'}}>
+        <Text
+          style={{
+            fontSize: 14,
+            alignSelf: 'center',
+            textAlign: 'center',
+            color: Colours.TextGrayColour,
+            fontFamily: Family.Medium,
+            marginTop: 100,
+          }}>
           No kundli availabe create new Kundli
         </Text>
       )}
@@ -157,11 +166,11 @@ const styles = StyleSheet.create({
   },
   createProfileButton: {
     backgroundColor: Colours.PrimaryColor,
-    borderRadius: 20,
-    width: '45%',
+    // borderRadius: 20,
+    width: '100%',
     paddingVertical: 10,
     position: 'absolute',
-    bottom: 20,
+    bottom: 0,
     alignItems: 'center',
     alignSelf: 'center',
   },

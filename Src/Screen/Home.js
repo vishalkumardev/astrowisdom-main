@@ -293,7 +293,7 @@ export default function Home({navigation}) {
               navigation.navigate('Chat');
             }}>
             <ChartIcon name="bag-checked" size={40} color="#fc6600" />
-            <Text style={styles.QuickButtonsText}>Best in Class</Text>
+            <Text style={styles.QuickButtonsText}>Business & Marriage</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.QuickButtonsBox}

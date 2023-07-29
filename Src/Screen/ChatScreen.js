@@ -539,6 +539,7 @@ const ChatScreen = ({navigation, route}) => {
                 paddingHorizontal: 5,
                 flex: 1,
               }}
+              keyboardType="default"
               placeholder="Search Astrologer"
               placeholderTextColor="#777"
               onChangeText={text => handleSearch(text)}

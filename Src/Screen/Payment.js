@@ -6,6 +6,7 @@ import {UserAuthContext} from '../context/UserAuthContext';
 const Payment = ({navigation, route}) => {
   const {User} = useContext(UserAuthContext);
   const {amount} = route.params;
+
   const handleUrl = newNavState => {
     const {url} = newNavState;
     if (url == 'https://astrowisdom.in/payment/standard/meTrnSuccess.php') {

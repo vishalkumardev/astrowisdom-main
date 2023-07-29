@@ -273,112 +273,111 @@ const Call = ({navigation}) => {
   return (
     <View>
       <Header navigation={navigation} name={'Call'} />
-
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        style={{
-          flexDirection: 'row',
-          backgroundColor: 'white',
-          padding: 5,
-          paddingVertical: 10,
-        }}
-        horizontal={true}>
-        <TouchableOpacity
-          style={styles.headerFilters}
-          onPress={() => {
-            setData(Alldata);
-            ChatFilter(null);
-          }}>
-          <Grid name="nav-icon-grid-a" size={14} color="gray" />
-          <Text style={styles.headerFiltersText}>All</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => DataFilter('love')}
-          style={styles.headerFilters}>
-          <Grid name="heart" size={14} color="red" />
-          <Text style={styles.headerFiltersText}>Love</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => DataFilter('Education')}
-          style={styles.headerFilters}>
-          <Filter name="book-education-outline" size={20} color="blue" />
-          <Text style={styles.headerFiltersText}>Education</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => DataFilter('career')}
-          style={styles.headerFilters}>
-          <Filter name="medical-bag" size={20} color="blue" />
-          <Text style={styles.headerFiltersText}>Career</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.headerFilters}
-          onPress={() => DataFilter('Marriage')}>
-          <Icon name="mars-double" size={20} color="purple" />
-          <Text style={styles.headerFiltersText}>Marriage</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.headerFilters}
-          onPress={() => DataFilter('Health')}>
-          <FontAwesome5 name="clinic-medical" size={20} color="pink" />
-          <Text style={styles.headerFiltersText}>Health</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.headerFilters}
-          onPress={() => DataFilter('Wealth')}>
-          <Entypo name="wallet" size={20} color="blue" />
-          <Text style={styles.headerFiltersText}>Wealth</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.headerFilters}
-          onPress={() => DataFilter('Business')}>
-          <FontAwesome5 name="business-time" size={20} color="blue" />
-          <Text style={styles.headerFiltersText}>Business</Text>
-        </TouchableOpacity>
-      </ScrollView>
-
-      <View
-        style={{
-          width: '95%',
-          alignSelf: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginVertical: 5,
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            backgroundColor: Colours.light,
-            flexDirection: 'row',
-            width: '90%',
-            alignItems: 'center',
-            paddingHorizontal: 15,
-            borderRadius: 50,
-          }}>
-          <Search name="search-outline" size={30} color="#d1cdcd" />
-          <TextInput
-            style={{
-              color: Colours.TextGrayColour,
-              fontFamily: Family.Medium,
-              paddingHorizontal: 5,
-              flex: 1,
-            }}
-            placeholder="Search Astrologer"
-            placeholderTextColor="#777"
-            onChangeText={text => handleSearch(text)}
-          />
-        </View>
-        <TouchableOpacity
-          onPress={() => setFiltermol(true)}
-          style={{marginLeft: 10, marginRight: 10}}>
-          <Filter name="filter-plus-outline" size={25} color="black" />
-        </TouchableOpacity>
-      </View>
-
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={() => getData()} />
         }
         style={{marginBottom: 55}}>
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          style={{
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            padding: 5,
+            paddingVertical: 10,
+          }}
+          horizontal={true}>
+          <TouchableOpacity
+            style={styles.headerFilters}
+            onPress={() => {
+              setData(Alldata);
+              ChatFilter(null);
+            }}>
+            <Grid name="nav-icon-grid-a" size={14} color="gray" />
+            <Text style={styles.headerFiltersText}>All</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => DataFilter('love')}
+            style={styles.headerFilters}>
+            <Grid name="heart" size={14} color="red" />
+            <Text style={styles.headerFiltersText}>Love</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => DataFilter('Education')}
+            style={styles.headerFilters}>
+            <Filter name="book-education-outline" size={20} color="blue" />
+            <Text style={styles.headerFiltersText}>Education</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => DataFilter('career')}
+            style={styles.headerFilters}>
+            <Filter name="medical-bag" size={20} color="blue" />
+            <Text style={styles.headerFiltersText}>Career</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.headerFilters}
+            onPress={() => DataFilter('Marriage')}>
+            <Icon name="mars-double" size={20} color="purple" />
+            <Text style={styles.headerFiltersText}>Marriage</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.headerFilters}
+            onPress={() => DataFilter('Health')}>
+            <FontAwesome5 name="clinic-medical" size={20} color="pink" />
+            <Text style={styles.headerFiltersText}>Health</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.headerFilters}
+            onPress={() => DataFilter('Wealth')}>
+            <Entypo name="wallet" size={20} color="blue" />
+            <Text style={styles.headerFiltersText}>Wealth</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.headerFilters}
+            onPress={() => DataFilter('Business')}>
+            <FontAwesome5 name="business-time" size={20} color="blue" />
+            <Text style={styles.headerFiltersText}>Business</Text>
+          </TouchableOpacity>
+        </ScrollView>
+
+        <View
+          style={{
+            width: '95%',
+            alignSelf: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginVertical: 5,
+            alignItems: 'center',
+          }}>
+          <View
+            style={{
+              backgroundColor: Colours.light,
+              flexDirection: 'row',
+              width: '90%',
+              alignItems: 'center',
+              paddingHorizontal: 15,
+              borderRadius: 50,
+            }}>
+            <Search name="search-outline" size={30} color="#d1cdcd" />
+            <TextInput
+              style={{
+                color: Colours.TextGrayColour,
+                fontFamily: Family.Medium,
+                paddingHorizontal: 5,
+                flex: 1,
+              }}
+              placeholder="Search Astrologer"
+              placeholderTextColor="#777"
+              onChangeText={text => handleSearch(text)}
+            />
+          </View>
+          <TouchableOpacity
+            onPress={() => setFiltermol(true)}
+            style={{marginLeft: 10, marginRight: 10}}>
+            <Filter name="filter-plus-outline" size={25} color="black" />
+          </TouchableOpacity>
+        </View>
+
         <FlatList data={Data} renderItem={AstrologerList} />
       </ScrollView>
 

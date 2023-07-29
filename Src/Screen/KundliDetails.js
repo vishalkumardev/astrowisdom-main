@@ -13,6 +13,7 @@ import {ApiCall} from './ApiCall';
 import Svg, {SvgXml} from 'react-native-svg';
 import {SvgUri} from 'react-native-svg';
 import KunsliChart from './KunsliChart';
+import Family from '../Utilities/Family';
 
 const KundliDetails = ({navigation, route}) => {
   const [svgCode, setSvgCode] = useState(null);
@@ -64,8 +65,6 @@ const KundliDetails = ({navigation, route}) => {
   const timeParts = TOB.split(':');
   const hour = timeParts[0];
   const minute = timeParts[1];
-
-  
 
   const data = {
     day: day,
@@ -221,24 +220,21 @@ const KundliDetails = ({navigation, route}) => {
         setNavamsa(response);
       },
     );
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/chalit',
-      data,
-    ).then(response => {
-      setTransit(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/SUN',
-      data,
-    ).then(response => {
-      setSun(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/MOON',
-      data,
-    ).then(response => {
-      setMoon(response);
-    });
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/chalit', data).then(
+      response => {
+        setTransit(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/SUN', data).then(
+      response => {
+        setSun(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/MOON', data).then(
+      response => {
+        setMoon(response);
+      },
+    );
     ApiCall('https://json.astrologyapi.com/v1/horo_chart/D2', data).then(
       response => {
         setD2(response);
@@ -259,54 +255,46 @@ const KundliDetails = ({navigation, route}) => {
         setD7(response);
       },
     );
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D10',
-      data,
-    ).then(response => {
-      setD10(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D16',
-      data,
-    ).then(response => {
-      setD16(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D20',
-      data,
-    ).then(response => {
-      setD20(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D24',
-      data,
-    ).then(response => {
-      setD24(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D30',
-      data,
-    ).then(response => {
-      setD30(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D40',
-      data,
-    ).then(response => {
-      setD40(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D45',
-      data,
-    ).then(response => {
-      setD45(response);
-    });
-    ApiCall(
-      'https://json.astrologyapi.com/v1/horo_chart/D60',
-      data,
-    ).then(response => {
-      setD60(response);
-    });
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D10', data).then(
+      response => {
+        setD10(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D16', data).then(
+      response => {
+        setD16(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D20', data).then(
+      response => {
+        setD20(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D24', data).then(
+      response => {
+        setD24(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D30', data).then(
+      response => {
+        setD30(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D40', data).then(
+      response => {
+        setD40(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D45', data).then(
+      response => {
+        setD45(response);
+      },
+    );
+    ApiCall('https://json.astrologyapi.com/v1/horo_chart/D60', data).then(
+      response => {
+        setD60(response);
+      },
+    );
     SetLoading(false);
   };
 
@@ -347,15 +335,15 @@ const KundliDetails = ({navigation, route}) => {
   // };
 
   const PlanetTable = ({item}) => (
-    <View style={{width:'100%'}}>
-      <View style={{flexDirection: 'row',width:'100%' }}>
+    <View style={{width: '100%'}}>
+      <View style={{flexDirection: 'row', width: '100%'}}>
         <Text
           style={{
             width: 73,
             marginVertical: 5,
             fontSize: 12,
             textAlign: 'center',
-            color:Colours.TextDarkColour
+            color: Colours.TextDarkColour,
           }}>
           {item.name}
         </Text>
@@ -614,21 +602,21 @@ const KundliDetails = ({navigation, route}) => {
           {Selected == 1 ? (
             <View>
               <Text style={styles.heading}>Lagna Chart</Text>
-              <KunsliChart Datas={Lagna}/>
+              <KunsliChart Datas={Lagna} />
             </View>
           ) : null}
           {Selected == 2 ? (
             <View>
               <Text style={styles.heading}>Navamsa</Text>
               {/* <SvgXml xml={Navamsa} style={{alignSelf: 'center'}} /> */}
-              <KunsliChart Datas={Navamsa}/>
+              <KunsliChart Datas={Navamsa} />
             </View>
           ) : null}
           {Selected == 3 ? (
             <View>
               <Text style={styles.heading}>Transit</Text>
               {/* <SvgXml xml={Transit} style={{alignSelf: 'center'}} /> */}
-              <KunsliChart Datas={Transit}/>
+              <KunsliChart Datas={Transit} />
             </View>
           ) : null}
           {Selected == 4 ? (
@@ -641,91 +629,91 @@ const KundliDetails = ({navigation, route}) => {
               {DivisionalSelect == 1 ? (
                 <View>
                   <Text style={styles.heading}>Chalit</Text>
-                  <KunsliChart Datas={Transit}/>
+                  <KunsliChart Datas={Transit} />
                 </View>
               ) : null}
               {DivisionalSelect == 2 ? (
                 <View>
                   <Text style={styles.heading}>Sun</Text>
-                  <KunsliChart Datas={Sun}/>
+                  <KunsliChart Datas={Sun} />
                 </View>
               ) : null}
               {DivisionalSelect == 3 ? (
                 <View>
                   <Text style={styles.heading}>Moon</Text>
-                  <KunsliChart Datas={Moon}/>
+                  <KunsliChart Datas={Moon} />
                 </View>
               ) : null}
               {DivisionalSelect == 4 ? (
                 <View>
                   <Text style={styles.heading}>Horo(D-2)</Text>
-                  <KunsliChart Datas={D2}/>
+                  <KunsliChart Datas={D2} />
                 </View>
               ) : null}
               {DivisionalSelect == 5 ? (
                 <View>
                   <Text style={styles.heading}>Drekkana(D-3)</Text>
-                  <KunsliChart Datas={D3}/>
+                  <KunsliChart Datas={D3} />
                 </View>
               ) : null}
               {DivisionalSelect == 6 ? (
                 <View>
                   <Text style={styles.heading}>Chathurthamasha(D-4)</Text>
-                  <KunsliChart Datas={D4}/>
+                  <KunsliChart Datas={D4} />
                 </View>
               ) : null}
               {DivisionalSelect == 7 ? (
                 <View>
                   <Text style={styles.heading}>Saptamansha(D-7)</Text>
-                  <KunsliChart Datas={D7}/>
+                  <KunsliChart Datas={D7} />
                 </View>
               ) : null}
               {DivisionalSelect == 8 ? (
                 <View>
                   <Text style={styles.heading}>Dashamansha(D-7)</Text>
-                  <KunsliChart Datas={D10}/>
+                  <KunsliChart Datas={D10} />
                 </View>
               ) : null}
               {DivisionalSelect == 9 ? (
                 <View>
                   <Text style={styles.heading}>Shodashamsha(D-16)</Text>
-                  <KunsliChart Datas={D16}/>
+                  <KunsliChart Datas={D16} />
                 </View>
               ) : null}
               {DivisionalSelect == 10 ? (
                 <View>
                   <Text style={styles.heading}>Vishamansha(D-20)</Text>
-                  <KunsliChart Datas={D20}/>
+                  <KunsliChart Datas={D20} />
                 </View>
               ) : null}
               {DivisionalSelect == 11 ? (
                 <View>
                   <Text style={styles.heading}>Chaturvimshamsha</Text>
-                  <KunsliChart Datas={D24}/>
+                  <KunsliChart Datas={D24} />
                 </View>
               ) : null}
               {DivisionalSelect == 12 ? (
                 <View>
                   <Text style={styles.heading}>Trishamansha(D-30)</Text>
-                  <KunsliChart Datas={D30}/>
+                  <KunsliChart Datas={D30} />
                 </View>
               ) : null}
               {DivisionalSelect == 13 ? (
                 <View>
                   <Text style={styles.heading}>Khavedamsha(D-40)</Text>
-                  <KunsliChart Datas={D40}/>
+                  <KunsliChart Datas={D40} />
                 </View>
               ) : null}
               {DivisionalSelect == 14 ? (
                 <View>
                   <Text style={styles.heading}>Akshvedansha(D-45)</Text>
-                  <KunsliChart Datas={D45}/>
+                  <KunsliChart Datas={D45} />
                 </View>
               ) : null}
               {DivisionalSelect == 15 ? (
                 <View>
                   <Text style={styles.heading}>Shashtymsha(D-60)</Text>
-                  <KunsliChart Datas={D40}/>
+                  <KunsliChart Datas={D40} />
                 </View>
               ) : null}
             </View>
@@ -920,7 +908,7 @@ const styles = StyleSheet.create({
   },
   HeadTabBarText: {
     textAlign: 'center',
-    color:Colours.TextDarkColour
+    color: Colours.TextDarkColour,
   },
 
   heading: {
@@ -985,7 +973,7 @@ const styles = StyleSheet.create({
     // marginVertical:5,
     paddingVertical: 10,
     fontSize: 12,
-    color:Colours.TextDarkColour
+    color: Colours.TextDarkColour,
   },
   TableTop: {
     flexDirection: 'row',
@@ -1037,6 +1025,8 @@ const styles = StyleSheet.create({
   },
   ChartHeadTabBarText: {
     textAlign: 'center',
+    color: Colours.TextGrayColour,
+    fontFamily: Family.Medium,
   },
   heading: {
     color: 'black',

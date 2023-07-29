@@ -72,9 +72,10 @@ const OrderHistory = ({navigation}) => {
               <View
                 style={{
                   backgroundColor: Colours.light,
-                  padding: 10,
+                  padding: 15,
                   marginHorizontal: 15,
                   marginVertical: 10,
+                  borderRadius: 10,
                 }}>
                 <Text
                   style={{
@@ -156,9 +157,10 @@ const OrderHistory = ({navigation}) => {
               <View
                 style={{
                   backgroundColor: Colours.light,
-                  padding: 10,
+                  padding: 15,
                   marginHorizontal: 15,
                   marginVertical: 10,
+                  borderRadius: 10,
                 }}>
                 <Text
                   style={{

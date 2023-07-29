@@ -10,6 +10,8 @@ import {
   FlatList,
   ActivityIndicator,
   Modal,
+  BackHandler,
+  Alert,
 } from 'react-native';
 import Colours from '../Assets/Colours';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -41,20 +43,15 @@ const CreateProfile = ({navigation}) => {
       getProfileData(value);
     });
   }, []);
+
   const [UserID, setUserID] = useState();
 
   const getProfileData = async value => {
-    console.log(
-      GLOBAL.BASE_URL + `myProfile&userId=${encodeURIComponent(value)}`,
-    );
-
     return fetch(
       GLOBAL.BASE_URL + `myProfile&userId=${encodeURIComponent(value)}`,
     )
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
-        console.log(responseJson.response.name);
         handleNameChange(responseJson.response.name);
         handleGenderChange(responseJson.response.gender);
         handlePOBChange(responseJson.response.placeOfBirth);
@@ -79,6 +76,15 @@ const CreateProfile = ({navigation}) => {
       handleCreateProfile();
     }
   };
+
+  useEffect(() => {
+    const unsuscribe = navigation.addListener('beforeRemove', e => {
+      e.preventDefault();
+      unsuscribe();
+      navigation.navigate('BottomNavigationBar');
+    });
+    return unsuscribe;
+  }, [navigation]);
 
   const handleCreateProfile = async () => {
     const dob =

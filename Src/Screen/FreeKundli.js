@@ -70,7 +70,7 @@ const FreeKundli = ({navigation}) => {
     )
       .then(response => response.json())
       .then(responseJson => {
-        navigation.navigate('Home');
+        navigation.goBack();
       });
   };
 
